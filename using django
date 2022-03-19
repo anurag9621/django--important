@@ -1,0 +1,34 @@
+
+>> mkdir project_name
+>> cd project
+>> Virtualenv env_name
+>> cd env 
+>> source bin/activate
+>> cd ..
+>> sudo pip install django
+>> django-admin startproject project_name
+>> cd project_name
+
+for creating new app in project(app is a sub-module of a project, and it is used to implement some functionality)
+>> python manage.py startapp app_name.         //(we name are project and app name "like" and "likes")
+then go to setting in main project folder .
+go some line down in INSTALLED_APPS add
+"likes.apps.LikesConfig"
+then go to urls.py file in main project folder 
+in "urlpatterns" add "path('', include('likes.urls')), "
+
+for add static folder
+first go to to your main project file then make a folder name "static"
+then in static folder make different folder for every static file
+like for CSS folder name is "css", for IMAGE folder name is "img" and for JS folder name is "js"
+now go to setting file in main project folder 
+scroll down to "STATIC_URL = 'static/'"
+then in next line add "STATIC_ROOT=os.path.join(BASE_DIR / 'static')"
+after that next line add "STATICFILES_DIRS=[os.path.join(BASE_DIR,'like/static'),]".          //(like is are project name)(remember the different between like and likes )
+then in terminal
+>> python manage.py collectstatic
+the you have able to use static files 
+
+
+
+
